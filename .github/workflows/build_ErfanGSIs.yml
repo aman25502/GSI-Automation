@@ -18,7 +18,7 @@ env:
   ROM_NAME: Flyme
   ZIP_NAME: FlymeOs-7-Global-16xs
   TZ: Asia/Kolkata
-  MIR: bit
+  MIR: trs
 jobs:
   build:
     runs-on: ubuntu-latest
