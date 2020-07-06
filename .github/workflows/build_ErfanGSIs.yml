@@ -14,9 +14,9 @@ on:
     types: [started]
     
 env:
-  ROM_URL: https://download.c.realme.com/osupdate/RMX1901EX_11_OTA_1040_all_BbUuFdfQYcIr.ozip
-  ROM_NAME: ColorOS
-  ZIP_NAME: Realme
+  ROM_URL: http://dl-res.flymeos.com/Firmware/Flyme/m6/7.1.2.0/intl/20190408091334/4d567dd4/update.zip
+  ROM_NAME: Flyme
+  ZIP_NAME: FlymeOs-7-Global-M6
   TZ: Asia/Kolkata
   MIR: bit
 jobs:
@@ -59,6 +59,7 @@ jobs:
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
+              curl -F chat_id="-1001349965943" -F document=@"ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z" -F caption="$ZIP_NAME" https://api.telegram.org/bot1294950340:AAF3nyGc8fOZtZ7wkAneQOkiORWZ_1YW2q8/sendDocument
               curl -sL https://git.io/file-transfer | sh
               ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
        - name: Zip AB and upload 
