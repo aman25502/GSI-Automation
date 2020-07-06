@@ -65,6 +65,7 @@ jobs:
        - name: Zip AB and upload 
          run: |
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
+              curl -F chat_id="-1001349965943" -F document=@"ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z" -F caption="$ZIP_NAME" https://api.telegram.org/bot1294950340:AAF3nyGc8fOZtZ7wkAneQOkiORWZ_1YW2q8/sendDocument
               ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z      
        - name: Print build info
          run: |
