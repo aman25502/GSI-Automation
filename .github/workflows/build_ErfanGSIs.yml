@@ -29,7 +29,8 @@ jobs:
        
        - name: Clean Up
          run: |
-           docker rmi `docker images -q`
+           docker rmi `docker images -q
+           sudo apt-get -y install megatools 
            sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d
            sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
            sudo -E apt-get update
@@ -59,13 +60,13 @@ jobs:
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
-              curl -F chat_id="-1001349965943" -F document=@"ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z" -F caption="$ZIP_NAME" https://api.telegram.org/bot1294950340:AAF3nyGc8fOZtZ7wkAneQOkiORWZ_1YW2q8/sendDocument
+              curl -F chat_id="-1001349965943" -F document=@"ErfanGSIs/output/*-Aonly-*.txt" -F caption="$ZIP_NAME" https://api.telegram.org/bot1294950340:AAF3nyGc8fOZtZ7wkAneQOkiORWZ_1YW2q8/sendDocument
+              megaput ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z -u $USER_EMAIL -p $USER_PASSWORD
               curl -sL https://git.io/file-transfer | sh
               ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
        - name: Zip AB and upload 
          run: |
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z ErfanGSIs/output/*-AB-*.img
-              curl -F chat_id="-1001349965943" -F document=@"ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z" -F caption="$ZIP_NAME" https://api.telegram.org/bot1294950340:AAF3nyGc8fOZtZ7wkAneQOkiORWZ_1YW2q8/sendDocument
               ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-AB.7z      
        - name: Print build info
          run: |
