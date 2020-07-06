@@ -60,7 +60,7 @@ jobs:
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
-              megaput ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z -u $USER_EMAIL -p $USER_PASSWORD
+              megaput ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z -u ${{ secrets.USER_EMAIL }} -p ${{ secrets.USER_PASSWORD }}
               curl -sL https://git.io/file-transfer | sh
               ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
        - name: Zip AB and upload 
