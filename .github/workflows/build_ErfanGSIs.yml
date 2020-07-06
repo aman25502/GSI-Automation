@@ -60,7 +60,6 @@ jobs:
               mkdir final
               sudo chmod -R 777 ErfanGSIs/output
               zip -r ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z ErfanGSIs/output/*-Aonly-*.img
-              curl -F chat_id="-1001349965943" -F document=@"ErfanGSIs/output/*-Aonly-*.txt" -F caption="$ZIP_NAME" https://api.telegram.org/bot1294950340:AAF3nyGc8fOZtZ7wkAneQOkiORWZ_1YW2q8/sendDocument
               megaput ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z -u $USER_EMAIL -p $USER_PASSWORD
               curl -sL https://git.io/file-transfer | sh
               ./transfer $MIR ErfanGSIs/output/$ZIP_NAME-GSI-Aonly.7z          
